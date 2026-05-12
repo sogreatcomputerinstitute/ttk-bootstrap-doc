@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>TTKBootstrap - Build Beautiful Python GUI Applications | Complete Guide</title>
+    <meta name="title" content="TTKBootstrap - Professional Python GUI Framework with Bootstrap Themes">
+    <meta name="description" content="Complete guide to TTKBootstrap - Create modern, responsive Python GUI applications with beautiful Bootstrap-inspired themes. Learn widgets, themes, and best practices.">
+    <meta name="keywords" content="ttkbootstrap, python gui, tkinter, bootstrap themes, gui framework, python application, desktop application, responsive design, widgets, tutorial">
+    <meta name="author" content="Ask Ninja">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:title" content="TTKBootstrap - Build Beautiful Python GUI Applications">
+    <meta property="og:description" content="Complete guide to TTKBootstrap with themes, widgets, components, and best practices for Python GUI development.">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <meta property="og:site_name" content="TTKBootstrap Guide">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com">
+    <meta property="twitter:title" content="TTKBootstrap - Professional Python GUI Framework">
+    <meta property="twitter:description" content="Learn to build modern Python GUI applications with TTKBootstrap themes and components.">
+    <meta property="twitter:image" content="https://example.com/twitter-image.jpg">
+    
+    <!-- Additional SEO -->
+    <meta name="canonical" content="https://example.com">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "TTKBootstrap - Complete Guide to Python GUI Development",
+        "description": "Comprehensive guide to TTKBootstrap framework for creating beautiful Python GUI applications with Bootstrap-inspired themes",
+        "author": {
+            "@type": "Organization",
+            "name": "Ask Ninja"
+        },
+        "datePublished": "2026-05-12",
+        "articleBody": "Complete guide covering installation, components, themes, and best practices for TTKBootstrap development"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://example.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Components",
+                "item": "https://example.com#components"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Themes",
+                "item": "https://example.com#themes"
+            }
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is TTKBootstrap?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TTKBootstrap is a modern theme for Python's Tkinter library that provides Bootstrap-inspired styling for creating professional GUI applications."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I install TTKBootstrap?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can install TTKBootstrap using pip: pip install ttkbootstrap"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What themes are available?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TTKBootstrap includes 5+ built-in themes: Darkly, Superhero, Flatly, Minty, and Pulse, each designed for different use cases."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --light: #f8f9fa;
+            --dark: #1a1a2e;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            background: #f5f7fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 46, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 150px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23dots)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease 0.1s both;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideDown 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideDown 0.8s ease 0.3s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            scroll-margin-top: 70px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--dark);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Installation Section */
+        .install-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 0 auto 15px;
+        }
+
+        .step-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            display: block;
+        }
+
+        /* Syntax Highlighting */
+        .keyword { color: #569cd6; font-weight: bold; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; font-style: italic; }
+        .function { color: #dcdcaa; }
+        .number { color: #b5cea8; }
+        .variable { color: #9cdcfe; }
+        .class-name { color: #4ec9b0; }
+        .operator { color: #d4d4d4; }
+        .parameter { color: #9cdcfe; }
+        .decorator { color: #c586c0; }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .code-block:hover .copy-btn {
+            opacity: 1;
+        }
+
+        /* Components Grid */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .component-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .component-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .component-header h3 {
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .component-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .component-body {
+            padding: 20px;
+        }
+
+        .component-body p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Themes Section */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .theme-card {
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .theme-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-darkly { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); }
+        .theme-superhero { background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); }
+        .theme-flatly { background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%); color: #333; }
+        .theme-minty { background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%); }
+        .theme-pulse { background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%); }
+
+        /* Table Styling */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        table thead {
+            background: var(--gradient);
+            color: white;
+        }
+
+        table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Feature List */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .feature h4 {
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Tabs */
+        .tabs {
+            margin: 30px 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .creator {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .creator strong {
+            color: var(--primary);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .components-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .themes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section a {
+                display: inline;
+                margin: 0 10px;
+            }
+
+            .install-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .code-block {
+                font-size: 12px;
+            }
+
+            .code-block code {
+                font-size: 11px;
+                line-height: 1.6;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+
+            .feature {
+                gap: 10px;
+            }
+
+            .feature-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .nav-links {
+                gap: 8px;
+                font-size: 12px;
+            }
+
+            .nav-container {
+                height: 60px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            section h2 {
+                font-size: 22px;
+            }
+
+            .component-card {
+                border-radius: 8px;
+            }
+
+            .code-block {
+                padding: 15px;
+                font-size: 11px;
+                margin: 15px 0;
+            }
+
+            .code-block code {
+                font-size: 10px;
+                line-height: 1.4;
+            }
+
+            .copy-btn {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+
+            .hero {
+                padding: 100px 15px 60px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .step-card {
+                padding: 20px;
+            }
+
+            table {
+                font-size: 12px;
+                overflow-x: auto;
+                display: block;
+            }
+
+            table thead,
+            table tbody,
+            table th,
+            table td,
+            table tr {
+                display: block;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                margin-bottom: 15px;
+                border: 1px solid #eee;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+
+            table td {
+                padding: 10px;
+                text-align: right;
+                padding-left: calc(50% + 10px);
+                position: relative;
+            }
+
+            table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                font-weight: bold;
+                text-align: left;
+                width: 45%;
+            }
+
+            .scroll-top {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 20px;
+            }
+
+            section h2 {
+                font-size: 18px;
+            }
+
+            .code-block {
+                padding: 10px;
+                font-size: 10px;
+            }
+
+            .code-block code {
+                font-size: 9px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .nav-links {
+                gap: 5px;
+                font-size: 11px;
+            }
+        }
+
+        /* Animations */
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .rotate {
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Border Animation */
+        .border-animate {
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        /* Loading Animation */
+        .loader {
+            border: 4px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #667eea;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Details/Accordion Styling */
+        details {
+            transition: all 0.3s ease;
+        }
+
+        details summary {
+            user-select: none;
+            outline: none;
+        }
+
+        details summary i {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary i {
+            transform: rotate(90deg);
+        }
+
+        details[open] {
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        /* Improved Mobile Table Styling */
+        @media (max-width: 480px) {
+            table {
+                width: 100%;
+                border: 0;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table, table tbody, table tr, table td {
+                display: block;
+                width: 100%;
+            }
+
+            table tr {
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                padding-right: 15px;
+                padding-left: calc(50% + 15px);
+                border: 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+
+            table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                font-weight: 600;
+                text-align: left;
+                width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container container">
+            <div class="logo">
+                <i class="fas fa-window-restore"></i>
+                TTKBootstrap
+            </div>
+            <ul class="nav-links">
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#themes">Themes</a></li>
+                <li><a href="#advanced">Advanced</a></li>
+                <li><a href="#best-practices">Best Practices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="gradient-text">TTKBootstrap</h1>
+                <p>Create Beautiful, Modern GUI Applications with Python Tkinter</p>
+                <div class="hero-buttons">
+                    <a href="#install" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Get Started
+                    </a>
+                    <a href="#components" class="btn btn-secondary">
+                        <i class="fas fa-book"></i> Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <section id="intro" class="container">
+        <h2>Welcome to TTKBootstrap - Modern Python GUI Framework</h2>
+        
+        <div class="section-intro">
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                <strong>TTKBootstrap</strong> is a modern, responsive theming library for Python's Tkinter that revolutionizes how you create desktop applications. It brings the beauty and functionality of Bootstrap styling to Tkinter widgets, enabling developers to build professional-looking GUI applications without extensive design knowledge. Whether you're a beginner learning Python or an experienced developer building enterprise applications, TTKBootstrap provides the tools you need to create stunning user interfaces.
+            </p>
+            <p style="font-size: 15px; line-height: 1.8; color: #666;">
+                Instead of spending hours styling individual widgets or learning complex CSS-like syntax, TTKBootstrap gives you immediate access to pre-designed, professionally crafted themes that work across all your widgets. Create beautiful applications in less time, with less code, and without sacrificing customization.
+            </p>
+        </div>
+
+        <h3 style="text-align: center; margin: 40px 0 30px; font-size: 24px; color: var(--dark);">Why Developers Choose TTKBootstrap</h3>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <div>
+                    <h4>10+ Beautiful Themes</h4>
+                    <p>Choose from multiple professionally designed Bootstrap-inspired themes. Each theme is optimized for different application types and use cases.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div>
+                    <h4>Incredibly Easy to Use</h4>
+                    <p>Simple and intuitive API. If you know Tkinter, you already know TTKBootstrap. Change themes with a single parameter.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <div>
+                    <h4>Fully Responsive Design</h4>
+                    <p>Build applications that look great on any screen size. Responsive layouts adapt perfectly to window resizing.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <div>
+                    <h4>Production Ready</h4>
+                    <p>Used by professional developers and companies worldwide. Suitable for commercial applications and enterprise software.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <div>
+                    <h4>Highly Customizable</h4>
+                    <p>While themes look great out of the box, you have full control to customize colors, fonts, and styles to match your brand.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💪</div>
+                <div>
+                    <h4>Comprehensive Component Library</h4>
+                    <p>Access to all Tkinter widgets with enhanced styling: buttons, inputs, lists, tables, tabs, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" class="container">
+        <h2>Installation & Quick Start Guide</h2>
+
+        <div class="section-intro">
+            <p>Getting started with TTKBootstrap is incredibly simple. Follow these three straightforward steps to begin building beautiful Python GUI applications. The installation process takes less than a minute, and you'll be ready to create professional applications immediately.</p>
+        </div>
+
+        <div class="install-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Install Package</h3>
+                <p>Install TTKBootstrap using pip package manager</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code><span class="variable">pip</span> install <span class="string">ttkbootstrap</span></code>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Import Library</h3>
+                <p>Import TTKBootstrap in your Python script</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code><span class="keyword">import</span> <span class="variable">ttkbootstrap</span> <span class="keyword">as</span> <span class="class-name">ttk</span></code>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Create Application</h3>
+                <p>Create your first TTKBootstrap application</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code><span class="variable">root</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Window</span>(<span class="parameter">themename</span><span class="operator">=</span><span class="string">"darkly"</span>)
+<span class="variable">root</span><span class="operator">.</span><span class="function">mainloop</span>()</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-intro">
+            <h3 style="margin-top: 0;">Getting Started Example</h3>
+            <p>Here's a simple complete example to get you started:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code><span class="keyword">import</span> <span class="variable">ttkbootstrap</span> <span class="keyword">as</span> <span class="class-name">ttk</span>
+<span class="keyword">from</span> <span class="variable">ttkbootstrap.constants</span> <span class="keyword">import</span> <span class="operator">*</span>
+
+<span class="comment"># Create the main window</span>
+<span class="variable">root</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Window</span>(<span class="parameter">themename</span><span class="operator">=</span><span class="string">"darkly"</span>)
+<span class="variable">root</span><span class="operator">.</span><span class="function">title</span>(<span class="string">"My TTKBootstrap App"</span>)
+<span class="variable">root</span><span class="operator">.</span><span class="function">geometry</span>(<span class="string">"400x300"</span>)
+
+<span class="comment"># Create a label</span>
+<span class="variable">label</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">text</span><span class="operator">=</span><span class="string">"Welcome to TTKBootstrap!"</span>,
+    <span class="parameter">font</span><span class="operator">=</span>(<span class="string">"Helvetica"</span>, <span class="number">14</span>)
+)
+<span class="variable">label</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">20</span>)
+
+<span class="comment"># Create a button</span>
+<span class="keyword">def</span> <span class="function">on_click</span>():
+    <span class="function">print</span>(<span class="string">"Button clicked!"</span>)
+
+<span class="variable">button</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">text</span><span class="operator">=</span><span class="string">"Click Me!"</span>,
+    <span class="parameter">command</span><span class="operator">=</span><span class="variable">on_click</span>
+)
+<span class="variable">button</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">10</span>)
+
+<span class="comment"># Run the application</span>
+<span class="variable">root</span><span class="operator">.</span><span class="function">mainloop</span>()</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Section -->
+    <section id="components" class="container">
+        <h2>Components & Widgets</h2>
+
+        <p style="text-align: center; font-size: 16px; color: #666; margin-bottom: 50px;">
+            TTKBootstrap provides a comprehensive set of modern widgets for building your applications
+        </p>
+
+        <div class="components-grid">
+            <!-- Button -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">🔘</div>
+                    <h3>Button</h3>
+                </div>
+                <div class="component-body">
+                    <p>Interactive clickable button with multiple styles</p>
+                    <div class="code-block">
+                        <code><span class="variable">button</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">text</span><span class="operator">=</span><span class="string">"Click Me"</span>,
+    <span class="parameter">command</span><span class="operator">=</span><span class="variable">on_click</span>,
+    <span class="parameter">bootstyle</span><span class="operator">=</span><span class="string">"primary"</span>)
+<span class="variable">button</span><span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Label -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">🏷️</div>
+                    <h3>Label</h3>
+                </div>
+                <div class="component-body">
+                    <p>Display text and images with various styles</p>
+                    <div class="code-block">
+                        <code><span class="variable">label</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">text</span><span class="operator">=</span><span class="string">"Hello World"</span>,
+    <span class="parameter">font</span><span class="operator">=</span>(<span class="string">"Helvetica"</span>, <span class="number">14</span>))
+<span class="variable">label</span><span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entry -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">📝</div>
+                    <h3>Entry</h3>
+                </div>
+                <div class="component-body">
+                    <p>Single-line text input field</p>
+                    <div class="code-block">
+                        <code><span class="variable">entry</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Entry</span>(<span class="variable">root</span>)
+<span class="variable">entry</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"x"</span>, <span class="parameter">padx</span><span class="operator">=</span><span class="number">10</span>)
+
+<span class="comment"># Get value</span>
+<span class="variable">value</span> <span class="operator">=</span> <span class="variable">entry</span><span class="operator">.</span><span class="function">get</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">☑️</div>
+                    <h3>Checkbox</h3>
+                </div>
+                <div class="component-body">
+                    <p>Toggle option with checkmark</p>
+                    <div class="code-block">
+                        <code><span class="variable">var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">IntVar</span>()
+<span class="variable">cb</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Checkbutton</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">text</span><span class="operator">=</span><span class="string">"Agree"</span>,
+    <span class="parameter">variable</span><span class="operator">=</span><span class="variable">var</span>)
+<span class="variable">cb</span><span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radio Button -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">◯</div>
+                    <h3>Radio Button</h3>
+                </div>
+                <div class="component-body">
+                    <p>Select one option from multiple choices</p>
+                    <div class="code-block">
+                        <code><span class="variable">var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">StringVar</span>()
+<span class="variable">radio</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Radiobutton</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">text</span><span class="operator">=</span><span class="string">"Option 1"</span>,
+    <span class="parameter">variable</span><span class="operator">=</span><span class="variable">var</span>,
+    <span class="parameter">value</span><span class="operator">=</span><span class="string">"opt1"</span>)
+<span class="variable">radio</span><span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Combobox -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">📋</div>
+                    <h3>Combobox</h3>
+                </div>
+                <div class="component-body">
+                    <p>Dropdown selection with options</p>
+                    <div class="code-block">
+                        <code><span class="variable">combo</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Combobox</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">values</span><span class="operator">=</span>[<span class="string">"Option 1"</span>, <span class="string">"Option 2"</span>],
+    <span class="parameter">state</span><span class="operator">=</span><span class="string">"readonly"</span>)
+<span class="variable">combo</span><span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frame -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">📦</div>
+                    <h3>Frame</h3>
+                </div>
+                <div class="component-body">
+                    <p>Container for organizing widgets</p>
+                    <div class="code-block">
+                        <code><span class="variable">frame</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Frame</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">padding</span><span class="operator">=</span><span class="number">10</span>,
+    <span class="parameter">relief</span><span class="operator">=</span><span class="string">"ridge"</span>)
+<span class="variable">frame</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"both"</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progressbar -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">⏳</div>
+                    <h3>Progressbar</h3>
+                </div>
+                <div class="component-body">
+                    <p>Show progress of operations</p>
+                    <div class="code-block">
+                        <code><span class="variable">progress</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Progressbar</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">length</span><span class="operator">=</span><span class="number">300</span>,
+    <span class="parameter">mode</span><span class="operator">=</span><span class="string">"determinate"</span>,
+    <span class="parameter">value</span><span class="operator">=</span><span class="number">50</span>)
+<span class="variable">progress</span><span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listbox -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">📑</div>
+                    <h3>Listbox</h3>
+                </div>
+                <div class="component-body">
+                    <p>Display list of selectable items</p>
+                    <div class="code-block">
+                        <code><span class="variable">listbox</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Listbox</span>(<span class="variable">root</span>)
+<span class="variable">listbox</span><span class="operator">.</span><span class="function">insert</span>(<span class="string">"end"</span>, <span class="string">"Item 1"</span>)
+<span class="variable">listbox</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"both"</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notebook (Tabs) -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">📑</div>
+                    <h3>Notebook</h3>
+                </div>
+                <div class="component-body">
+                    <p>Tabbed interface for organizing content</p>
+                    <div class="code-block">
+                        <code><span class="variable">notebook</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Notebook</span>(<span class="variable">root</span>)
+<span class="variable">tab1</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Frame</span>(<span class="variable">notebook</span>)
+<span class="variable">notebook</span><span class="operator">.</span><span class="function">add</span>(<span class="variable">tab1</span>, <span class="parameter">text</span><span class="operator">=</span><span class="string">"Tab 1"</span>)
+<span class="variable">notebook</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"both"</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Widget -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">📄</div>
+                    <h3>Text Widget</h3>
+                </div>
+                <div class="component-body">
+                    <p>Multi-line text editor</p>
+                    <div class="code-block">
+                        <code><span class="variable">text</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Text</span>(<span class="variable">root</span>, <span class="parameter">height</span><span class="operator">=</span><span class="number">10</span>)
+<span class="variable">text</span><span class="operator">.</span><span class="function">insert</span>(<span class="string">"1.0"</span>, <span class="string">"Hello"</span>)
+<span class="variable">text</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"both"</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treeview -->
+            <div class="component-card">
+                <div class="component-header">
+                    <div class="component-icon">🌳</div>
+                    <h3>Treeview</h3>
+                </div>
+                <div class="component-body">
+                    <p>Table/tree structure for data</p>
+                    <div class="code-block">
+                        <code><span class="variable">tree</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Treeview</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">columns</span><span class="operator">=</span>(<span class="string">"Name"</span>, <span class="string">"Age"</span>))
+<span class="variable">tree</span><span class="operator">.</span><span class="function">heading</span>(<span class="string">"#0"</span>, <span class="parameter">text</span><span class="operator">=</span><span class="string">"ID"</span>)
+<span class="variable">tree</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"both"</span>)</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-intro" style="margin-top: 60px;">
+            <h3 style="margin-top: 0;">Button Styles (bootstyle)</h3>
+            <p>TTKBootstrap provides multiple button styles to match your design:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Color</th>
+                        <th>Use Case</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>primary</code></td>
+                        <td>Blue</td>
+                        <td>Main actions</td>
+                        <td>Submit button</td>
+                    </tr>
+                    <tr>
+                        <td><code>secondary</code></td>
+                        <td>Gray</td>
+                        <td>Secondary actions</td>
+                        <td>Cancel button</td>
+                    </tr>
+                    <tr>
+                        <td><code>success</code></td>
+                        <td>Green</td>
+                        <td>Successful actions</td>
+                        <td>Save button</td>
+                    </tr>
+                    <tr>
+                        <td><code>danger</code></td>
+                        <td>Red</td>
+                        <td>Destructive actions</td>
+                        <td>Delete button</td>
+                    </tr>
+                    <tr>
+                        <td><code>warning</code></td>
+                        <td>Orange</td>
+                        <td>Warning messages</td>
+                        <td>Confirm action</td>
+                    </tr>
+                    <tr>
+                        <td><code>info</code></td>
+                        <td>Light Blue</td>
+                        <td>Information</td>
+                        <td>Help button</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Themes Section -->
+    <section id="themes" class="container">
+        <h2>Themes: Styling Your Application</h2>
+
+        <div class="section-intro">
+            <h3 style="margin-top: 0;">What Are Themes?</h3>
+            <p>
+                Themes are pre-designed color schemes and styling templates that instantly transform the appearance of your application. Instead of manually defining colors, fonts, and styles for every widget, TTKBootstrap themes provide professionally designed combinations that work together harmoniously. Each theme has a specific aesthetic and is suited for different types of applications.
+            </p>
+            <p>
+                <strong>Key Benefits:</strong>
+            </p>
+            <ul style="margin: 15px 0; padding-left: 20px;">
+                <li>⏱️ <strong>Save Time:</strong> Apply complete styling with one line of code</li>
+                <li>🎨 <strong>Professional Appearance:</strong> Designs created by professionals</li>
+                <li>🔄 <strong>Easy Switching:</strong> Change themes at runtime with no code changes</li>
+                <li>📱 <strong>Consistent Styling:</strong> All widgets match the theme automatically</li>
+                <li>♿ <strong>Accessibility:</strong> Themes consider color contrast and readability</li>
+            </ul>
+        </div>
+
+        <h3 style="text-align: center; margin: 40px 0 30px; font-size: 24px; color: var(--dark);">Available Themes & Use Cases</h3>
+
+        <div class="themes-grid">
+            <div class="theme-card theme-darkly">
+                <i class="fas fa-moon" style="font-size: 40px; margin-bottom: 10px;"></i>
+                <div style="font-weight: 600;">Darkly</div>
+                <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">Modern dark theme perfect for applications that need to reduce eye strain. Best for: Code editors, monitoring dashboards, developer tools, media applications.</p>
+            </div>
+            <div class="theme-card theme-superhero">
+                <i class="fas fa-star" style="font-size: 40px; margin-bottom: 10px;"></i>
+                <div style="font-weight: 600;">Superhero</div>
+                <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">Dark blue professional theme with vibrant accents. Best for: Enterprise applications, data analysis tools, professional software, SaaS platforms.</p>
+            </div>
+            <div class="theme-card theme-flatly">
+                <i class="fas fa-sun" style="font-size: 40px; margin-bottom: 10px;"></i>
+                <div style="font-weight: 600;">Flatly</div>
+                <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">Minimal light theme with flat design. Best for: Educational apps, productivity tools, daytime usage, minimalist design preference.</p>
+            </div>
+            <div class="theme-card theme-minty">
+                <i class="fas fa-leaf" style="font-size: 40px; margin-bottom: 10px;"></i>
+                <div style="font-weight: 600;">Minty</div>
+                <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">Fresh mint green theme. Best for: Health apps, wellness tools, environmental applications, modern startups.</p>
+            </div>
+            <div class="theme-card theme-pulse">
+                <i class="fas fa-heart" style="font-size: 40px; margin-bottom: 10px;"></i>
+                <div style="font-weight: 600;">Pulse</div>
+                <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">Dark purple vibrant theme. Best for: Creative tools, gaming applications, entertainment software, modern design-focused apps.</p>
+            </div>
+        </div>
+
+        <div class="section-intro" style="margin-top: 40px;">
+            <h3 style="margin-top: 0;">How to Use Themes in Your Application</h3>
+            
+            <h4 style="margin-top: 20px; color: var(--dark);">1. Set Theme at Startup</h4>
+            <p>Choose a theme when creating your main window:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code><span class="keyword">import</span> <span class="variable">ttkbootstrap</span> <span class="keyword">as</span> <span class="class-name">ttk</span>
+
+<span class="comment"># Create window with a specific theme</span>
+<span class="variable">root</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Window</span>(
+    <span class="parameter">themename</span><span class="operator">=</span><span class="string">"darkly"</span>  <span class="comment"># Choose your theme here</span>
+)
+<span class="variable">root</span><span class="operator">.</span><span class="function">title</span>(<span class="string">"My Application"</span>)
+<span class="variable">root</span><span class="operator">.</span><span class="function">mainloop</span>()</code>
+            </div>
+
+            <h4 style="margin-top: 20px; color: var(--dark);">2. Change Theme at Runtime</h4>
+            <p>Let users switch themes dynamically with buttons or a dropdown:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code><span class="keyword">import</span> <span class="variable">ttkbootstrap</span> <span class="keyword">as</span> <span class="class-name">ttk</span>
+
+<span class="variable">root</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Window</span>(<span class="parameter">themename</span><span class="operator">=</span><span class="string">"darkly"</span>)
+
+<span class="keyword">def</span> <span class="function">change_theme</span>(<span class="parameter">theme_name</span>):
+    <span class="comment"># Switch to a different theme</span>
+    <span class="variable">root</span><span class="operator">.</span><span class="variable">style</span><span class="operator">.</span><span class="function">theme_use</span>(<span class="parameter">theme_name</span>)
+
+<span class="comment"># Create a dropdown to select theme</span>
+<span class="variable">theme_var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">StringVar</span>(<span class="parameter">value</span><span class="operator">=</span><span class="string">"darkly"</span>)
+<span class="variable">themes</span> <span class="operator">=</span> [<span class="string">"darkly"</span>, <span class="string">"superhero"</span>, <span class="string">"flatly"</span>, <span class="string">"minty"</span>, <span class="string">"pulse"</span>]
+
+<span class="variable">combo</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Combobox</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">values</span><span class="operator">=</span><span class="variable">themes</span>,
+    <span class="parameter">textvariable</span><span class="operator">=</span><span class="variable">theme_var</span>,
+    <span class="parameter">state</span><span class="operator">=</span><span class="string">"readonly"</span>
+)
+<span class="variable">combo</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">10</span>)
+<span class="variable">combo</span><span class="operator">.</span><span class="function">bind</span>(<span class="string">"&lt;&lt;ComboboxSelected&gt;&gt;"</span>,
+           <span class="keyword">lambda</span> <span class="parameter">e</span>: <span class="function">change_theme</span>(<span class="parameter">theme_var</span><span class="operator">.</span><span class="function">get</span>()))
+
+<span class="variable">root</span><span class="operator">.</span><span class="function">mainloop</span>()</code>
+            </div>
+
+            <h4 style="margin-top: 20px; color: var(--dark);">3. Theme Selection Guide</h4>
+            <p style="margin: 15px 0;">Choose your theme based on your application type:</p>
+            <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Theme</th>
+                        <th>Best For</th>
+                        <th>Appearance</th>
+                        <th>Target Users</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Theme"><strong>Darkly</strong></td>
+                        <td data-label="Best For">Code editors, monitoring tools</td>
+                        <td data-label="Appearance">Dark with neutral colors</td>
+                        <td data-label="Target Users">Developers, night users</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Theme"><strong>Superhero</strong></td>
+                        <td data-label="Best For">Enterprise, data analytics</td>
+                        <td data-label="Appearance">Professional dark blue</td>
+                        <td data-label="Target Users">Business users, analysts</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Theme"><strong>Flatly</strong></td>
+                        <td data-label="Best For">Productivity, education</td>
+                        <td data-label="Appearance">Clean light design</td>
+                        <td data-label="Target Users">General users, daytime work</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Theme"><strong>Minty</strong></td>
+                        <td data-label="Best For">Health, wellness apps</td>
+                        <td data-label="Appearance">Fresh, modern mint</td>
+                        <td data-label="Target Users">Health-conscious users</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Theme"><strong>Pulse</strong></td>
+                        <td data-label="Best For">Creative, gaming apps</td>
+                        <td data-label="Appearance">Vibrant dark purple</td>
+                        <td data-label="Target Users">Creative professionals</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="section-intro">
+            <h3 style="margin-top: 0;">Complete Theme Switching Example</h3>
+            <p>Here's a full application that lets users switch between themes with a nice interface:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code><span class="keyword">import</span> <span class="variable">ttkbootstrap</span> <span class="keyword">as</span> <span class="class-name">ttk</span>
+
+<span class="keyword">class</span> <span class="class-name">ThemeSwitcherApp</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">root</span>):
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span> <span class="operator">=</span> <span class="variable">root</span>
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span><span class="operator">.</span><span class="function">title</span>(<span class="string">"Theme Switcher"</span>)
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span><span class="operator">.</span><span class="function">geometry</span>(<span class="string">"400x300"</span>)
+        
+        <span class="comment"># Title</span>
+        <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(
+            <span class="variable">root</span>,
+            <span class="parameter">text</span><span class="operator">=</span><span class="string">"Choose a Theme"</span>,
+            <span class="parameter">font</span><span class="operator">=</span>(<span class="string">"Helvetica"</span>, <span class="number">16</span>, <span class="string">"bold"</span>)
+        )<span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">20</span>)
+        
+        <span class="comment"># Theme list</span>
+        <span class="variable">themes</span> <span class="operator">=</span> [<span class="string">"darkly"</span>, <span class="string">"superhero"</span>, <span class="string">"flatly"</span>,
+                      <span class="string">"minty"</span>, <span class="string">"pulse"</span>]
+        
+        <span class="keyword">for</span> <span class="variable">theme</span> <span class="keyword">in</span> <span class="variable">themes</span>:
+            <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(
+                <span class="variable">root</span>,
+                <span class="parameter">text</span><span class="operator">=</span><span class="variable">theme</span><span class="operator">.</span><span class="function">capitalize</span>(),
+                <span class="parameter">command</span><span class="operator">=</span><span class="keyword">lambda</span> <span class="variable">t</span><span class="operator">=</span><span class="variable">theme</span>: 
+                    <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span><span class="operator">.</span><span class="variable">style</span><span class="operator">.</span><span class="function">theme_use</span>(<span class="variable">t</span>),
+                <span class="parameter">width</span><span class="operator">=</span><span class="number">20</span>
+            )<span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">8</span>)
+
+<span class="keyword">if</span> <span class="variable">__name__</span> <span class="operator">==</span> <span class="string">"__main__"</span>:
+    <span class="variable">root</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Window</span>(<span class="parameter">themename</span><span class="operator">=</span><span class="string">"darkly"</span>)
+    <span class="variable">app</span> <span class="operator">=</span> <span class="class-name">ThemeSwitcherApp</span>(<span class="variable">root</span>)
+    <span class="variable">root</span><span class="operator">.</span><span class="function">mainloop</span>()</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Usage Section -->
+    <section id="advanced" class="container">
+        <h2>Advanced Usage</h2>
+
+        <div class="section-intro">
+            <h3 style="margin-top: 0;">Build a Complete Todo Application</h3>
+            <p>Here's a complete example of a professional Todo app:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code><span class="keyword">import</span> <span class="variable">ttkbootstrap</span> <span class="keyword">as</span> <span class="class-name">ttk</span>
+<span class="keyword">from</span> <span class="variable">ttkbootstrap.dialogs</span> <span class="keyword">import</span> <span class="class-name">Messagebox</span>
+
+<span class="keyword">class</span> <span class="class-name">TodoApp</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">root</span>):
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span> <span class="operator">=</span> <span class="variable">root</span>
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span><span class="operator">.</span><span class="function">title</span>(<span class="string">"Todo App"</span>)
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">root</span><span class="operator">.</span><span class="function">geometry</span>(<span class="string">"500x400"</span>)
+        
+        <span class="comment"># Title</span>
+        <span class="variable">title</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(
+            <span class="variable">root</span>,
+            <span class="parameter">text</span><span class="operator">=</span><span class="string">"My Todo App"</span>,
+            <span class="parameter">font</span><span class="operator">=</span>(<span class="string">"Helvetica"</span>, <span class="number">16</span>, <span class="string">"bold"</span>),
+            <span class="parameter">bootstyle</span><span class="operator">=</span><span class="string">"primary"</span>)
+        <span class="variable">title</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">20</span>)
+        
+        <span class="comment"># Input Frame</span>
+        <span class="variable">input_frame</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Frame</span>(<span class="variable">root</span>)
+        <span class="variable">input_frame</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">pady</span><span class="operator">=</span><span class="number">10</span>, <span class="parameter">padx</span><span class="operator">=</span><span class="number">10</span>)
+        
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">entry</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Entry</span>(<span class="variable">input_frame</span>)
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">entry</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">side</span><span class="operator">=</span><span class="string">"left"</span>, <span class="parameter">fill</span><span class="operator">=</span><span class="string">"x"</span>)
+        
+        <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(<span class="variable">input_frame</span>, <span class="parameter">text</span><span class="operator">=</span><span class="string">"Add"</span>,
+                  <span class="parameter">command</span><span class="operator">=</span><span class="parameter">self</span><span class="operator">.</span><span class="variable">add_todo</span>)<span class="operator">.</span><span class="function">pack</span>(<span class="parameter">side</span><span class="operator">=</span><span class="string">"left"</span>)
+    
+    <span class="keyword">def</span> <span class="function">add_todo</span>(<span class="parameter">self</span>):
+        <span class="variable">task</span> <span class="operator">=</span> <span class="parameter">self</span><span class="operator">.</span><span class="variable">entry</span><span class="operator">.</span><span class="function">get</span>()
+        <span class="keyword">if</span> <span class="variable">task</span>:
+            <span class="parameter">self</span><span class="operator">.</span><span class="variable">listbox</span><span class="operator">.</span><span class="function">insert</span>(<span class="string">"end"</span>, <span class="variable">task</span>)
+            <span class="parameter">self</span><span class="operator">.</span><span class="variable">entry</span><span class="operator">.</span><span class="function">delete</span>(<span class="number">0</span>, <span class="string">"end"</span>)
+
+<span class="keyword">if</span> <span class="variable">__name__</span> <span class="operator">==</span> <span class="string">"__main__"</span>:
+    <span class="variable">root</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Window</span>(<span class="parameter">themename</span><span class="operator">=</span><span class="string">"darkly"</span>)
+    <span class="variable">app</span> <span class="operator">=</span> <span class="class-name">TodoApp</span>(<span class="variable">root</span>)
+    <span class="variable">root</span><span class="operator">.</span><span class="function">mainloop</span>()</code>
+            </div>
+        </div>
+
+        <div class="section-intro">
+            <h3 style="margin-top: 0;">Working with Data</h3>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                <code><span class="comment"># Using Variables to Track State</span>
+<span class="variable">username_var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">StringVar</span>()
+<span class="variable">password_var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">StringVar</span>()
+<span class="variable">agree_var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">IntVar</span>()
+
+<span class="variable">username_entry</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Entry</span>(
+    <span class="variable">root</span>, <span class="parameter">textvariable</span><span class="operator">=</span><span class="variable">username_var</span>)
+<span class="variable">password_entry</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Entry</span>(
+    <span class="variable">root</span>, <span class="parameter">textvariable</span><span class="operator">=</span><span class="variable">password_var</span>, <span class="parameter">show</span><span class="operator">=</span><span class="string">"*"</span>)
+<span class="variable">agree_cb</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Checkbutton</span>(
+    <span class="variable">root</span>, <span class="parameter">text</span><span class="operator">=</span><span class="string">"I Agree"</span>,
+    <span class="parameter">variable</span><span class="operator">=</span><span class="variable">agree_var</span>)
+
+<span class="keyword">def</span> <span class="function">submit</span>():
+    <span class="variable">username</span> <span class="operator">=</span> <span class="variable">username_var</span><span class="operator">.</span><span class="function">get</span>()
+    <span class="variable">password</span> <span class="operator">=</span> <span class="variable">password_var</span><span class="operator">.</span><span class="function">get</span>()
+    <span class="variable">agreed</span> <span class="operator">=</span> <span class="variable">agree_var</span><span class="operator">.</span><span class="function">get</span>()
+    <span class="function">print</span>(<span class="string">f"Username: {username}, Agreed: {agreed}"</span>)
+
+<span class="variable">submit_btn</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(
+    <span class="variable">root</span>, <span class="parameter">text</span><span class="operator">=</span><span class="string">"Submit"</span>, <span class="parameter">command</span><span class="operator">=</span><span class="variable">submit</span>)
+<span class="variable">submit_btn</span><span class="operator">.</span><span class="function">pack</span>()</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section id="best-practices" class="container">
+        <h2>Best Practices</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px;">
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-code" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Naming Conventions</h3>
+                </div>
+                <div class="component-body">
+                    <div class="code-block" style="font-size: 12px;">
+                        <code><span class="comment"># Good</span>
+<span class="variable">primary_button</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(...)
+<span class="variable">error_label</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(...)
+
+<span class="comment"># Avoid</span>
+<span class="variable">btn</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(...)
+<span class="variable">lbl</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(...)</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-folder-tree" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Organize with Frames</h3>
+                </div>
+                <div class="component-body">
+                    <div class="code-block" style="font-size: 12px;">
+                        <code><span class="comment"># Group related widgets</span>
+<span class="variable">form_frame</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Frame</span>(<span class="variable">root</span>)
+<span class="variable">form_frame</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"x"</span>)
+
+<span class="variable">button_frame</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Frame</span>(<span class="variable">root</span>)
+<span class="variable">button_frame</span><span class="operator">.</span><span class="function">pack</span>(<span class="parameter">fill</span><span class="operator">=</span><span class="string">"x"</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-database" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Use Variables</h3>
+                </div>
+                <div class="component-body">
+                    <div class="code-block" style="font-size: 12px;">
+                        <code><span class="comment"># Track state with variables</span>
+<span class="variable">var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">StringVar</span>()
+<span class="variable">entry</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Entry</span>(
+    <span class="variable">root</span>,
+    <span class="parameter">textvariable</span><span class="operator">=</span><span class="variable">var</span>)
+<span class="variable">value</span> <span class="operator">=</span> <span class="variable">var</span><span class="operator">.</span><span class="function">get</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-puzzle-piece" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Reusable Components</h3>
+                </div>
+                <div class="component-body">
+                    <div class="code-block" style="font-size: 12px;">
+                        <code><span class="keyword">class</span> <span class="class-name">FormField</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="parameter">self</span>, <span class="parameter">parent</span>, <span class="parameter">label</span>):
+        <span class="parameter">self</span><span class="operator">.</span><span class="variable">var</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">StringVar</span>()
+        <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Label</span>(<span class="parameter">parent</span>,
+                     <span class="parameter">text</span><span class="operator">=</span><span class="parameter">label</span>)<span class="operator">.</span><span class="function">pack</span>()
+        <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Entry</span>(<span class="parameter">parent</span>,
+                   <span class="parameter">textvariable</span><span class="operator">=</span><span class="parameter">self</span><span class="operator">.</span><span class="variable">var</span>)<span class="operator">.</span><span class="function">pack</span>()</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-mouse" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Event Handling</h3>
+                </div>
+                <div class="component-body">
+                    <div class="code-block" style="font-size: 12px;">
+                        <code><span class="comment"># Use descriptive names</span>
+<span class="keyword">def</span> <span class="function">on_button_click</span>():
+    <span class="function">print</span>(<span class="string">"Clicked"</span>)
+
+<span class="keyword">def</span> <span class="function">on_entry_change</span>(<span class="parameter">event</span>):
+    <span class="function">print</span>(<span class="parameter">event</span><span class="operator">.</span><span class="variable">widget</span><span class="operator">.</span><span class="function">get</span>())
+
+<span class="variable">button</span><span class="operator">.</span><span class="function">bind</span>(<span class="string">"&lt;Button-1&gt;"</span>,
+           <span class="variable">on_button_click</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-palette" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Consistent Styling</h3>
+                </div>
+                <div class="component-body">
+                    <div class="code-block" style="font-size: 12px;">
+                        <code><span class="comment"># Define style constants</span>
+<span class="variable">PRIMARY</span> <span class="operator">=</span> <span class="string">"primary"</span>
+<span class="variable">SUCCESS</span> <span class="operator">=</span> <span class="string">"success"</span>
+<span class="variable">ERROR</span> <span class="operator">=</span> <span class="string">"danger"</span>
+
+<span class="variable">btn</span> <span class="operator">=</span> <span class="class-name">ttk</span><span class="operator">.</span><span class="function">Button</span>(
+    ...,
+    <span class="parameter">bootstyle</span><span class="operator">=</span><span class="variable">PRIMARY</span>)</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="container">
+        <h2>Why Choose TTKBootstrap?</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px;">
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-code" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Easy to Learn</h3>
+                </div>
+                <div class="component-body">
+                    <p>Simple API built on top of Tkinter. If you know Python, you can create professional GUIs in minutes.</p>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-paint-brush" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Beautiful by Default</h3>
+                </div>
+                <div class="component-body">
+                    <p>Modern Bootstrap-inspired themes make your app look professional without any design skills required.</p>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-rocket" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Fast Development</h3>
+                </div>
+                <div class="component-body">
+                    <p>Build complete applications quickly with pre-styled components and minimal boilerplate code.</p>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-lock" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Production Ready</h3>
+                </div>
+                <div class="component-body">
+                    <p>Suitable for professional applications. Used in production by developers and companies worldwide.</p>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-users" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Active Community</h3>
+                </div>
+                <div class="component-body">
+                    <p>Large community of developers providing support, examples, and contributions to the project.</p>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-file-alt" style="font-size: 32px; margin-bottom: 10px;"></i>
+                    <h3>Well Documented</h3>
+                </div>
+                <div class="component-body">
+                    <p>Comprehensive documentation and examples to help you get started and solve common challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container" style="background: white; border-radius: 10px; padding: 40px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <details style="padding: 20px; border-bottom: 1px solid #eee; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    What is TTKBootstrap and why should I use it?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    TTKBootstrap is a modern theming library for Python's Tkinter that brings Bootstrap-inspired styling to your GUI applications. It eliminates the need to manually style widgets, making your applications look professional instantly. Use it when you want to create beautiful desktop applications without spending time on styling or design.
+                </div>
+            </details>
+
+            <details style="padding: 20px; border-bottom: 1px solid #eee; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    Can I change themes at runtime?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    Yes! TTKBootstrap allows you to switch themes dynamically using <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">root.style.theme_use(theme_name)</code>. This is perfect for giving users theme preferences or creating a theme selector in your application.
+                </div>
+            </details>
+
+            <details style="padding: 20px; border-bottom: 1px solid #eee; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    How many themes does TTKBootstrap offer?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    TTKBootstrap comes with 5 main themes: Darkly (dark theme for reduced eye strain), Superhero (professional dark blue), Flatly (clean light design), Minty (fresh green), and Pulse (vibrant purple). Each is optimized for specific use cases.
+                </div>
+            </details>
+
+            <details style="padding: 20px; border-bottom: 1px solid #eee; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    Is TTKBootstrap free?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    Yes! TTKBootstrap is completely free and open-source. You can use it in personal and commercial projects without any restrictions or licensing fees.
+                </div>
+            </details>
+
+            <details style="padding: 20px; border-bottom: 1px solid #eee; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    What are the system requirements?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    TTKBootstrap requires Python 3.6 or higher and Tkinter (which comes with most Python installations). It works on Windows, macOS, and Linux.
+                </div>
+            </details>
+
+            <details style="padding: 20px; border-bottom: 1px solid #eee; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    Can I customize themes to match my brand?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    Yes! You can customize colors and styles using TTKBootstrap's styling API. You can modify existing themes or create your own custom theme to match your brand colors and design preferences.
+                </div>
+            </details>
+
+            <details style="padding: 20px; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; color: var(--dark); padding: 10px 0;">
+                    <i class="fas fa-chevron-right" style="margin-right: 10px; transition: transform 0.3s;"></i>
+                    Where can I get help if I have questions?
+                </summary>
+                <div style="padding: 15px 0 15px 30px; color: #666; line-height: 1.6;">
+                    TTKBootstrap has comprehensive documentation at <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">ttkbootstrap.readthedocs.io</code>, an active GitHub repository with examples and issues, and a helpful community of developers ready to assist.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="container">
+        <h2>Resources & Support</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="section-intro">
+                <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-book"></i> Official Documentation
+                </h3>
+                <p>Complete API reference and guides available at the official TTKBootstrap documentation.</p>
+                <a href="https://ttkbootstrap.readthedocs.io/" target="_blank" class="btn btn-primary" style="width: fit-content; margin-top: 15px;">
+                    <i class="fas fa-external-link-alt"></i> Visit Docs
+                </a>
+            </div>
+
+            <div class="section-intro">
+                <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-github"></i> GitHub Repository
+                </h3>
+                <p>View source code, report issues, and contribute to the TTKBootstrap project.</p>
+                <a href="https://github.com/Israel-Dryer/ttkbootstrap" target="_blank" class="btn btn-primary" style="width: fit-content; margin-top: 15px;">
+                    <i class="fas fa-external-link-alt"></i> View on GitHub
+                </a>
+            </div>
+
+            <div class="section-intro">
+                <h3 style="margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-python"></i> Python Official Docs
+                </h3>
+                <p>Learn more about Tkinter and Python's official documentation.</p>
+                <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" class="btn btn-primary" style="width: fit-content; margin-top: 15px;">
+                    <i class="fas fa-external-link-alt"></i> Python Docs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#install">Installation</a></li>
+                    <li><a href="#components">Components</a></li>
+                    <li><a href="#themes">Themes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Documentation</h4>
+                <ul>
+                    <li><a href="https://ttkbootstrap.readthedocs.io/" target="_blank">Official Docs</a></li>
+                    <li><a href="https://github.com/Israel-Dryer/ttkbootstrap" target="_blank">GitHub</a></li>
+                    <li><a href="https://docs.python.org/3/" target="_blank">Python Docs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>About TTKBootstrap</h4>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Examples</a></li>
+                    <li><a href="#">License</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="creator">
+            <p>📚 Complete Documentation & Guide created by <strong>Ask Ninja</strong></p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Built with ❤️ using HTML5, CSS3, and JavaScript | 
+                TTKBootstrap by <strong>Israel Dryer</strong>
+            </p>
+            <p style="margin-top: 10px;">© 2024 TTKBootstrap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Copy code to clipboard
+        function copyCode(btn) {
+            const codeElement = btn.nextElementSibling;
+            
+            // Extract text content without HTML tags
+            let code = '';
+            const walker = document.createTreeWalker(
+                codeElement,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+            
+            let node;
+            while (node = walker.nextNode()) {
+                code += node.textContent;
+            }
+            
+            navigator.clipboard.writeText(code);
+            
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+
+        // Scroll to top functionality
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.querySelector('.scroll-top');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.component-card, .step-card, .section-intro').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Tab functionality
+        function switchTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const activeContent = document.querySelector(`[data-tab="${tabName}"]`);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+            
+            event.target.classList.add('active');
+        }
+
+        // Page load animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
